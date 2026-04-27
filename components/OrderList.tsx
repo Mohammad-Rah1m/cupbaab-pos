@@ -155,17 +155,17 @@ export default function OrderList({ initialOrders }: { initialOrders: any[] }) {
   };
 
   // --- 4. REALTIME & DB ACTIONS ---
-  useEffect(() => {
-    const channel = supabase
-      .channel("orders_realtime")
-      .on("postgres_changes", { event: "*", table: "orders" }, (payload) => {
-        if (payload.eventType === "INSERT") setOrders((p) => [payload.new, ...p]);
-        if (payload.eventType === "UPDATE") setOrders((p) => p.map((o) => (o.id === payload.new.id ? payload.new : o)));
-        if (payload.eventType === "DELETE") setOrders((p) => p.filter((o) => o.id !== payload.old.id));
-      })
-      .subscribe();
-    return () => { supabase.removeChannel(channel); };
-  }, [supabase]);
+  // useEffect(() => {
+  //   const channel = supabase
+  //     .channel("orders_realtime")
+  //     .on("postgres_changes" as any, { event: "*", table: "orders", schema:"public" }, (payload) => {
+  //       if (payload.eventType === "INSERT") setOrders((p) => [payload.new, ...p]);
+  //       if (payload.eventType === "UPDATE") setOrders((p) => p.map((o) => (o.id === payload.new.id ? payload.new : o)));
+  //       if (payload.eventType === "DELETE") setOrders((p) => p.filter((o) => o.id !== payload.old.id));
+  //     })
+  //     .subscribe();
+  //   return () => { supabase.removeChannel(channel); };
+  // }, [supabase]);
 
   const handleDelete = async (id: string) => {
     if (!confirm("Delete this order record permanently?")) return;
