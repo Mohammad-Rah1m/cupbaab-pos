@@ -18,8 +18,8 @@ const navItems = [
   { name: "Orders", href: "/orders", icon: ListTodo },
   { name: "Archive", href: "/archive", icon: History },
   // { name: "History", href: "/history", icon: History },
-  { name: "Kitchen", href: "/kitchen", icon: ChefHat },
-  { name: "Settings", href: "/settings", icon: Settings },
+  // { name: "Kitchen", href: "/kitchen", icon: ChefHat },
+  // { name: "Settings", href: "/settings", icon: Settings },
 ];
 
 export default function Sidebar() {
