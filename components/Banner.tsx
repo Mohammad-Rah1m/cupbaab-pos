@@ -2,7 +2,13 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-const Banner = ({ title, description }) => {
+const Banner = ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => {
   return (
     <div className="flex items-center gap-4 mb-6">
       <Link
